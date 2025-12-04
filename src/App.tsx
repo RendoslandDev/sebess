@@ -26,6 +26,7 @@ interface Category {
 interface ChartDataPoint {
   name: string;
   value: number;
+  [key: string]: any;
 }
 
 interface SelectedCell {
@@ -540,10 +541,11 @@ const App: React.FC = () => {
                           fill="#8884d8"
                           dataKey="value"
                         >
-                          {getChartData().map((entry, index) => (
+                          {getChartData().map((_, index) => (
                             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                           ))}
                         </Pie>
+
                         <Tooltip />
                       </PieChart>
                     </ResponsiveContainer>
